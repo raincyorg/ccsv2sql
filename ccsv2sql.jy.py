@@ -62,7 +62,6 @@ def ccsv2sql(file, out, separator, db, verbose, version, info):
 		if headers:
 			fields = separator.join(row).split(separator)
 			headers = False
-
 		else:
 			rows.append(row)
 
@@ -87,7 +86,6 @@ def ccsv2sql(file, out, separator, db, verbose, version, info):
 			pattern = re.compile('\d{4}\-\d{2}\-\d{2}')
 			if pattern.match(value):
 				ctable += '`%s` TIMESTAMP,\n' % key
-
 			else:
 				length = 50
 				if key == 'description': length = 100
