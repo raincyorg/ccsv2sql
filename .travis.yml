@@ -14,4 +14,3 @@ install: make dependencies
 before_script: make
 script: make test
 after_script: make clean
-
