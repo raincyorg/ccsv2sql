@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env jython
 """
 ccsv2sql
 Utility to convert a CSV file to a SQL dump.
