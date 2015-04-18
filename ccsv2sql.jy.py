@@ -126,8 +126,8 @@ def ccsv2sql(file, out, separator, db, verbose, version, info):
 	ctable += ')\nENGINE=InnoDB DEFAULT CHARSET=utf8;'
 
 	if verbose:
-		print('\nGenerating SQL dump file: \'{0}\' from\nCSV file: \'{1}\'\n'
-		.format(out, file))
+		print('\nGenerating SQL dump file: \'%s\' from\nCSV file: \'%s\'\n'
+		% (out, file))
 
 	f = open(out, 'w')
 	f.write('-- SQL table dump from CSV file: %s (%s -> %s)\n' 
@@ -146,7 +146,7 @@ def ccsv2sql(file, out, separator, db, verbose, version, info):
 
 # Handle any command line arguments.
 try:
-	opts, args = getopt.getopt(sys.argv[1:], "f:o:tlvi")
+	opts, args = getopt.getopt(sys.argv[1:], "f:o:s:d:lvi")
 except:
 	print('Invalid option or argument.')
 	displayInfo()
