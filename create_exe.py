@@ -1,4 +1,4 @@
-# Create Windows executable for csql2mongo using
+# Create Windows executable for ccsv2sql using
 # Py2Exe module - http://www.py2exe.org
 # Usage: python create_exe.py py2exe
 from distutils.core import setup
