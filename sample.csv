@@ -1,0 +1,4 @@
+_id,username,surname,forename,password,email,createdAt
+ObjectId(54e64cbed9bd98fc247c7b6f),jeff,Gerstmann,Jeff,blah,jeff@nowhere.xyz,2015-04-02T17:02:57.000Z
+ObjectId(54e72fc66f21a144196fe786),wmurdoch,Murdoch,William,blah,w.murdoch@canada.gov.ca,2015-04-02T17:02:57.000Z
+ObjectId(551d76412ee2beb762f87673),markus,Fartus,Markus,blah,markus@nowhere.xyz,2015-04-02T17:02:57.000Z
