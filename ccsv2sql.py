@@ -62,7 +62,6 @@ def ccsv2sql(file, out, separator, db, verbose, version, info):
 			if headers:
 				fields = separator.join(row).split(separator)
 				headers = False
-
 			else:
 				rows.append(row)
 
