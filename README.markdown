@@ -1,6 +1,6 @@
 # ccsv2sql
-<!--[![Build Status](https://travis-ci.org/stpettersens/csql2mongo.svg?branch=master)](https://travis-ci.org/stpettersens/csql2mongo) 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/stpettersens/csql2mongo?branch=master&svg=true)](https://ci.appveyor.com/project/stpettersens/csql2mongo)-->
+[![Build Status](https://travis-ci.org/stpettersens/ccsv2sql.svg?branch=master)](https://travis-ci.org/stpettersens/ccsv2sql) 
+[![Build status](https://ci.appveyor.com/api/projects/status/github/stpettersens/ccsv2sql?branch=master&svg=true)](https://ci.appveyor.com/project/stpettersens/ccsv2sql)
 
 Utility to convert a CSV file to a SQL dump.
 
