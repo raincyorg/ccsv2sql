@@ -140,7 +140,7 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 	f.write('{0}\n\n'.format(ctable))
 
 	for insert in inserts:
-		f.write('{0}\n'.format(insert))
+		f.write(insert)
 
 	f.close()
 
