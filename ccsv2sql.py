@@ -157,4 +157,4 @@ parser.add_argument('-v', '--version', action='store_true', dest='version')
 parser.add_argument('-i', '--info', action='store_true', dest='info')
 argv = parser.parse_args()
 
-ccsv2sql(argv.file, argv.out, argv.separator, argv.db, argv.comments, argil.verbose, argv.version, argv.info)
+ccsv2sql(argv.file, argv.out, argv.separator, argv.db, argv.comments, argv.verbose, argv.version, argv.info)
