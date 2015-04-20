@@ -3,8 +3,8 @@
 #
 
 FREEZE = cxfreeze
-SOURCE = ccsv2sql.nodate.py
-TARGET = ccsv2sql.nodate
+SOURCE = ccsv2sql.py
+TARGET = ccsv2sql
 
 make:
 	$(FREEZE) $(SOURCE) --target-dir dist
