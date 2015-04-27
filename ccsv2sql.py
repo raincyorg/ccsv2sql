@@ -15,7 +15,7 @@ import re
 import datetime
 import argparse
 
-signature = 'ccsv2sql 1.0.2 (https://github.com/stpettersens/ccsv2sql)'
+signature = 'ccsv2sql 1.0.3 (https://github.com/stpettersens/ccsv2sql)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -122,7 +122,7 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 		x = x + 1
 
 	ctable = ctable[:-2]
-	ctable += ')\nENGINE=InnoDB DEFAULT CHARSET=utf8;'
+	ctable += ');'
 
 	if verbose:
 		print('\nGenerating SQL dump file: \'{0}\' from\nCSV file: \'{1}\'\n'
