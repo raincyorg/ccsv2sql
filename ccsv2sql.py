@@ -15,7 +15,7 @@ import re
 import datetime
 import argparse
 
-signature = 'ccsv2sql 1.0.3 (https://github.com/stpettersens/ccsv2sql)'
+signature = 'ccsv2sql 1.0.4 (https://github.com/stpettersens/ccsv2sql)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -87,12 +87,18 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 			pattern = re.compile('\d{4}\-\d{2}\-\d{2}')
 			if pattern.match(value):
 				ctable += '`{0}` TIMESTAMP,\n'.format(key)
+
+    			pattern = re.compile('true|false')
+    			if pattern.match(value):
+     				ctable += '`{0}` BOOLEAN,\n'.format(key)
+
 			else:
 				length = 50
 				if key == 'description': length = 100
 				ctable += '`{0}` VARCHAR({1}),\n'.format(key, length)
 
-		else: ctable += '`{0}` NUMERIC(15, 2),\n'.format(key)
+		else: 
+			ctable += '`{0}` NUMERIC(15, 2),\n'.format(key)
 
 		x = x + 1
 
@@ -112,7 +118,12 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 					fvalue = re.sub('\.\d{3}Z', '', fvalue)
 					fvalue = re.sub('\.\d{3}\+\d{4}', '', fvalue)
 
-				ii += '\'{0}\',\n'.format(fvalue)
+     				pattern = re.compile('true|false')
+     				if pattern.match(value):
+      					ii += '{0},\n'.format(fvalue.upper())
+      					continue
+
+    	 			ii += '\'{0}\',\n'.format(fvalue)
 
 			else: ii += '{0},\n'.format(fvalue)
 
