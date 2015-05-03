@@ -15,7 +15,7 @@ import re
 import datetime
 import getopt
 
-signature = 'ccsv2sql 1.0.3 [Jython] (https://github.com/stpettersens/ccsv2sql)'
+signature = 'ccsv2sql 1.0.4 [Jython] (https://github.com/stpettersens/ccsv2sql)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -89,7 +89,7 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 			if pattern.match(value):
 				ctable += '`%s` TIMESTAMP,\n' % key
 
-			pattern = re.compile('true|false')
+			pattern = re.compile('true|false', re.IGNORECASE)
 			if pattern.match(value):
 				ctable += '`%s` BOOLEAN,\n' % key
 
@@ -118,7 +118,7 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 					fvalue = re.sub('\.\d{3}Z', '', fvalue)
 					fvalue = re.sub('\.\d{3}\+\d{4}', '', fvalue)
 
-				pattern = re.compile('true|false')
+				pattern = re.compile('true|false|null', re.IGNORECASE)
 				if pattern.match(value):
 					ii += '%s,\n' % fvalue.upper()
 					continue
