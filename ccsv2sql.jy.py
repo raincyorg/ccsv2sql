@@ -15,7 +15,7 @@ import re
 import datetime
 import getopt
 
-signature = 'ccsv2sql 1.0.2 [Jython] (https://github.com/stpettersens/ccsv2sql)'
+signature = 'ccsv2sql 1.0.3 [Jython] (https://github.com/stpettersens/ccsv2sql)'
 
 def displayVersion():
 	print('\n' + signature)
@@ -82,12 +82,17 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 		tvalue = re.sub('\.', '', fvalue)
 
 		if value.startswith('ObjectId('):
-			ctable += '`%s` VARCHAR(30),\n' % key
+			ctable += '`%s` VARCHAR(24),\n' % key
 
 		elif tvalue.isdigit() == False:
 			pattern = re.compile('\d{4}\-\d{2}\-\d{2}')
 			if pattern.match(value):
 				ctable += '`%s` TIMESTAMP,\n' % key
+
+			pattern = re.compile('true|false')
+			if pattern.match(value):
+				ctable += '`%s` BOOLEAN,\n' % key
+
 			else:
 				length = 50
 				if key == 'description': length = 100
@@ -113,6 +118,11 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 					fvalue = re.sub('\.\d{3}Z', '', fvalue)
 					fvalue = re.sub('\.\d{3}\+\d{4}', '', fvalue)
 
+				pattern = re.compile('true|false')
+				if pattern.match(value):
+					ii += '%s,\n' % fvalue.upper()
+					continue
+
 				ii += '\'%s\',\n' % fvalue
 
 			else: ii += '%s,\n' % fvalue
@@ -123,7 +133,7 @@ def ccsv2sql(file, out, separator, db, comments, verbose, version, info):
 		x = x + 1
 
 	ctable = ctable[:-2]
-	ctable += ')\nENGINE=InnoDB DEFAULT CHARSET=utf8;'
+	ctable += ');'
 
 	if verbose:
 		print('\nGenerating SQL dump file: \'%s\' from\nCSV file: \'%s\'\n'
